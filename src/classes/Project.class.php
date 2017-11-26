@@ -6,9 +6,21 @@
 class Project
 {
 
-    function __construct()
+    function __construct($arr = NULL)
     {
+        if($arr !== NULL){
+            if(!isset($arr['title']))
+                throw new Exception("Missing Title", 1);
 
+            if(!isset($arr['date']))
+                $this->date = date('Y-m-d', time());
+
+            foreach ($arr as $key => $value) {
+                $this->{$key} = $value;
+            }
+        }
+
+        $this->slug = String::toAscii($this->title);
     }
 
     static public function getById($id)

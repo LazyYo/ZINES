@@ -34,8 +34,11 @@ $router->get('/', function(){
     $p = new Project([
         'title' => 'Allah Ou Akbar'
     ]);
-    var_dump($p);
-    var_dump($p->insert());
+
+    // $p = Project::getById(1);
+
+    echo '<pre>'.print_r($p, TRUE).'</pre>';
+    // var_dump($p->insert());
 
     include_once(ASSETS_DIR.'templates/endscripts.php');
 });

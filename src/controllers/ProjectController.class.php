@@ -8,9 +8,9 @@ class ProjectController
     static public function show($id)
     {
         global $page_title;
-        $page_title = "Project #$id";
-
         $entity = Project::getById($id);
+
+        $page_title = $entity->title;
 
         if(!$entity) throw new Exception(";(", 404);
 

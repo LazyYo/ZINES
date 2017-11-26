@@ -1,0 +1,75 @@
+main img {
+    margin-bottom: 2em;
+}
+
+.project-menu{
+  background: #222;
+  color: #fff;
+  transform: translateY(100%);
+  transition: transform .35s ease;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-menu > .project-description{
+    overflow: scroll;
+    max-height: 50%;
+}
+
+.expand .project-menu{
+  transform: translateY(0%);
+  transition: transform .7s ease;
+}
+
+body.expand{
+  overflow-y: hidden;
+}
+
+.project-ui{
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+}
+
+
+.project-counters > span:nth-child(odd){
+  padding-right: .3em;
+}
+.project-counters > span:nth-child(even){
+  padding-right: 1em;
+}
+
+.project-ui span.material-icons:nth-child(1) {
+    margin-bottom: 2em;
+}
+.project-ui span.material-icons:nth-child(n+2) {
+    margin-bottom: 1em;
+}
+
+
+
+.project-menu > header{ position: relative; line-height: 1.5em;}
+
+.project-menu header h1 {
+    text-transform: uppercase;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.project-counters {
+  display: flex;
+  align-items: center;
+  font-size: .8em;
+}
+.project-counters .material-icons{ font-size: inherit!important;}
+
+.project-meta{
+    text-transform: uppercase;
+    font-size: .8em;
+    margin-bottom: 6em;
+}

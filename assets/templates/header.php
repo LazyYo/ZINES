@@ -11,6 +11,7 @@
 <script type="text/javascript" src="<?=ASSETS_DIR?>js/Log.module.js"></script>
 <script type="text/javascript" src="<?=ASSETS_DIR?>js/XHR.module.js"></script>
 
+<link rel="stylesheet" href="<?=ASSETS_DIR?>CSS/project.template.css">
 <link rel="stylesheet" href="<?=ASSETS_DIR?>CSS/Log.module.css">
 <link rel="stylesheet" href="<?=ASSETS_DIR?>CSS/main.css">
 <link rel="stylesheet" href="<?=ASSETS_DIR?>CSS/forms.css">
