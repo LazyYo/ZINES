@@ -35,10 +35,10 @@ a, [onclick]{cursor: pointer;}
 
 body{
   /*background: #252735;*/
-  background: #191919!important;
-  color: #555!important;
+  background: #EEE!important;
+  color: #444!important;
   /*font-family: 'Open Sans', sans-serif!important;*/
-  font-family: 'Hind', monospace!important;
+  font-family: 'Roboto', sans-serif!important;
 }
 
 html, body{

@@ -4,7 +4,7 @@
 
 <title><?=$page_title?></title>
 
-<link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 
 <script type="text/javascript"> window.Tether = {}; </script>
 
