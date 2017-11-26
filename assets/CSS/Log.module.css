@@ -1,0 +1,23 @@
+#LogModuleElement {
+    z-index: 10001;
+    font-size: 1.3em;
+    line-height: 40px;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    padding: 0em 1em 0px 1em;
+    margin: 0 0;
+    opacity: 0;
+    transition: all .3s ease-out;
+}
+
+#LogModuleElement.clear{transform: translateY(40px);opacity: 0;transition: all .3s ease-out;}
+#LogModuleElement.error{opacity: 1; color: white;background-color: rgb(209, 50, 57);}
+#LogModuleElement.success{opacity: 1; color: white;background-color: rgb(91, 173, 46);}
+
+@media (max-width: 500px) {
+  #LogModuleElement{
+    font-size: .8em;
+    padding: 0em 1em 0px 1em;
+  }
+}
