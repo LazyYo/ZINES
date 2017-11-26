@@ -1,0 +1,9 @@
+# Le serveur doit suivre les liens symboliques :
+Options +FollowSymlinks
+# Activation du module de réécriture d'URL :
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !=/favicon.ico
+RewriteRule ^(.*)$ index.php?r=$1 [NC,L,QSA]
