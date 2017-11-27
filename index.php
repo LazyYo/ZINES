@@ -31,14 +31,14 @@ $router->get('/', function(){
 
     include_once(ASSETS_DIR.'templates/header.php');
 
+
     $p = new Project([
-        'title' => 'Allah Ou Akbar'
+        'title' => 'Hello !',
     ]);
 
-    // $p = Project::getById(1);
+    // var_dump($p->insert());
 
     echo '<pre>'.print_r($p, TRUE).'</pre>';
-    // var_dump($p->insert());
 
     include_once(ASSETS_DIR.'templates/endscripts.php');
 });

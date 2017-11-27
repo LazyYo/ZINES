@@ -15,17 +15,17 @@ class Roles{
     static public function login($mail, $password){
         try {
             if($mail == '')
-                throw new Exception("Empty email", 1);
+                throw new Exception("Empty email/username", 1);
 
             // First step : check mail existence and return user data
-            $r = Database::getInstance()->prepare('SELECT * FROM users WHERE mail = :mail');
+            $r = Database::getInstance()->prepare('SELECT * FROM users WHERE mail = :mail OR username = :mail');
             $r->setFetchMode(PDO::FETCH_CLASS, 'User');
             $r->bindParam(':mail', $mail);
             if(!$r->execute()) throw new Exception('DBError : SELECT');
 
             $user = $r->fetch();
             if($user === FALSE)
-                throw new Exception("Unknown mail", 1);
+                throw new Exception("Unknown mail/username", 1);
 
             if($password == '')
                 throw new Exception("Empty password", 1);

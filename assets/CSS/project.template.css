@@ -25,6 +25,9 @@ main img {
 body.expand{
   overflow-y: hidden;
 }
+body:not(.expand) main{
+  cursor: default;
+}
 
 .project-ui{
   position: absolute;

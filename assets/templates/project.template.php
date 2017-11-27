@@ -64,7 +64,10 @@
 
       </div>
       <div class="project-meta">
-        <span><?=$project->type?></span> — <span><?=date('F Y', strtotime( $project->date ) )?></span>
+          <?php if($project->type !== NULL) ?>
+          <span><?=($project->type !== NULL)?$project->type.' — ':''?></span>
+          <span><?=date('F Y', strtotime( $project->date ) ). ' — '?></span>
+          <span><?=$project->author->username?></span>
       </div>
     </section>
 
