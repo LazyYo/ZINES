@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 26, 2017 at 02:49 PM
+-- Generation Time: Dec 01, 2017 at 11:23 PM
 -- Server version: 5.6.28
 -- PHP Version: 5.6.25
 
@@ -17,40 +17,44 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `projects`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `projects` (
-  `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `slug` varchar(255) NOT NULL,
-  `public` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `users` (
+  `id` bigint(20) NOT NULL,
+  `mail` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'data/incal.jpg',
+  `first_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `last_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Membres';
 
 --
--- Dumping data for table `projects`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `projects` (`id`, `title`, `slug`, `public`) VALUES
-(1, 'Allah ou Akbar', 'allah-ou-akbar', 1);
+INSERT INTO `users` (`id`, `mail`, `username`, `password`, `avatar`, `first_name`, `last_name`) VALUES
+(1, 'castellani.yoan@gmail.com', 'LazyYo', '$2y$10$ZSy71l0rVlySGePqQHIUt.ABmGmuwjVwddH5Cfh0c5SzxCdCnPCR6', 'assets/medias/user-1-avatar.jpg', 'Yoan', 'Castellani'),
+(2, 'rollinger.nicolas@gmail.com', 'RLLN', '$2y$10$ZSy71l0rVlySGePqQHIUt.ABmGmuwjVwddH5Cfh0c5SzxCdCnPCR6', 'assets/medias/user-2-avatar.png', 'Nicolas', 'Rollinger');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `projects`
+-- Indexes for table `users`
 --
-ALTER TABLE `projects`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `slug` (`slug`);
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `projects`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
