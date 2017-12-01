@@ -42,7 +42,7 @@ class Project
             }
         }
 
-        $this->slug = String::toAscii($this->title);
+        $this->slug = AppUtil::toAscii($this->title);
 
         $this->full_url = "projects/$this->id/$this->slug";
 
@@ -57,7 +57,7 @@ class Project
     public function setTitle($value)
     {
         $this->title = $value;
-        $this->slug = String::toAscii($this->title);
+        $this->slug = AppUtil::toAscii($this->title);
     }
 
     static public function getById($id)
