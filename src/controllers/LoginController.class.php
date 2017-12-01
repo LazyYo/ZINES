@@ -27,12 +27,17 @@ class LoginController
         // Every page must declare at least the page_title as global
         global $page_title;
         $page_title = 'Login';
-
-        $t = new Template(ASSETS_DIR.'templates/login.template.php');
+        
+        // Already connected.
+        // if(isset($_SESSION['user']))
+        //     header('Location: '.ABS_URL.'admin');
 
         include_once(ASSETS_DIR.'templates/header.php');
+
+        $t = new Template(ASSETS_DIR.'templates/login.template.php');
         echo $t->output();
-        include_once(ASSETS_DIR.'templates/loader.php');
-        include_once(ASSETS_DIR.'templates/endscripts.php');
+
+        // include_once(ASSETS_DIR.'templates/loader.php');
+        // include_once(ASSETS_DIR.'templates/endscripts.php');
     }
 }

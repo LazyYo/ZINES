@@ -21,7 +21,23 @@ $router->get('/login/', 'LoginController::LoginPage', 'login');
 $router->get('/logout', 'LoginController::logout', 'logout');
 $router->post('/login/connect/', 'LoginController::connect');
 
+$router->get('/projects/:id/:slug', 'ProjectController::show', 'project_show')->with('id', '[0-9]+')->with('slug', '[a-zA-Z0-9-]+');
 $router->get('/projects/:id', 'ProjectController::show', 'project_show')->with('id', '[0-9]+');
+
+$router->get('/admin/projects/:id', 'ProjectController::edit', 'project_edit')->with('id', '[0-9]+');
+
+$router->post('/admin/profile/avatar', 'UserController::UploadAvatar', 'user_edit_avatar');
+
+
+
+
+$router->get('/admin', function(){
+    echo 'Admin';
+});
+$router->get('/admin/profile/edit', 'AdminController::profile_edit');
+
+
+$router->get('/admin/profile', 'AdminController::profile');
 
 $router->get('/', function(){
     // Every page must declare at least the page_title as global
@@ -31,14 +47,7 @@ $router->get('/', function(){
 
     include_once(ASSETS_DIR.'templates/header.php');
 
-
-    $p = new Project([
-        'title' => 'Hello !',
-    ]);
-
-    // var_dump($p->insert());
-
-    echo '<pre>'.print_r($p, TRUE).'</pre>';
+    include_once(ASSETS_DIR.'templates/grid.php');
 
     include_once(ASSETS_DIR.'templates/endscripts.php');
 });
@@ -53,7 +62,7 @@ try {
     switch ($e->getCode()) {
         case 403:
             $page_title = 'Permission denied';
-            header('Location: login');
+            header('Location: '.ABS_URL.'login');
             break;
         case 404:
             $page_title = 'Page not found';

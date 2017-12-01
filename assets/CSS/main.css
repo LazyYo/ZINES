@@ -27,6 +27,8 @@ a, [onclick]{cursor: pointer;}
 .logo.dark{color: black;}
 .logo.light{color: white;}
 
+main{ min-height: 100vh;}
+
 /******************************************************************************/
 /* SCROLLBAR
 /******************************************************************************/
@@ -35,8 +37,8 @@ a, [onclick]{cursor: pointer;}
 
 body{
   /*background: #252735;*/
-  background: #EEE!important;
-  color: #444!important;
+  /*background: #EEE!important;*/
+  color: #222!important;
   /*font-family: 'Open Sans', sans-serif!important;*/
   font-family: 'Roboto', sans-serif!important;
 }

@@ -11,6 +11,7 @@ class Project
             $author,
             $date,
             $description,
+            $thumbnail,
             $type,
             $public = true,
             $nb_views = 0,
@@ -39,15 +40,18 @@ class Project
             } else {
                 $this->author = User::getById($arr['author']);
             }
-
         }
 
         $this->slug = String::toAscii($this->title);
+
+        $this->full_url = "projects/$this->id/$this->slug";
 
         // Get the Author object
         if(is_numeric($this->author)){
             $this->author = User::getById($this->author);
         }
+
+        if($this->id) $this->contentFile = ASSETS_DIR."templates/projects/$this->id.php";
     }
 
     public function setTitle($value)
@@ -72,21 +76,24 @@ class Project
         if(!$duplicate->execute()) throw new Exception('DBError : SELECT DUPLICATE');
         if($duplicate->fetch()) throw new Exception('DBError : DUPLICATE');
 
-        $r = Database::getInstance()->prepare("INSERT INTO projects (`title`,  `slug`, `author`, `date`, `description`, `type`, `public`, `nb_views`, `nb_shares`, `nb_downloads`, nb_downloads_limit)
-                                                            VALUES  (:title, :slug,:author,:date,:description,:type,:public, '0' , '0' , '0',:nb_downloads_limit);");
+        $r = Database::getInstance()->prepare("INSERT INTO projects (`title`,  `slug`, `author`, `date`, `description`, `thumbnail`,`type`, `public`, `nb_views`, `nb_shares`, `nb_downloads`, nb_downloads_limit)
+                                                            VALUES  (:title, :slug,:author,:date,:description,:thumbnail,:type,:public, '0' , '0' , '0',:nb_downloads_limit);");
 
         $r->bindParam(':title', $this->title);
         $r->bindParam(':slug', $this->slug);
         $r->bindParam(':author', $this->author->id);
         $r->bindParam(':date', $this->date);
         $r->bindParam(':description', $this->description);
+        $r->bindParam(':thumbnail', $this->thumbnail);
         $r->bindParam(':type', $this->type);
         $r->bindParam(':public', $this->public);
         $r->bindParam(':nb_downloads_limit', $this->nb_downloads_limit);
 
         if(!$r->execute()) throw new Exception('DBError : INSERT');
 
-        return $this->id = Database::getInstance()->lastInsertId();
+        $this->id = Database::getInstance()->lastInsertId();
+        $this->initFileContent();
+        return $this->id;
     }
 
     public function update()
@@ -96,7 +103,7 @@ class Project
         if(!$duplicate->execute()) throw new Exception('DBError : SELECT DUPLICATE');
         if($duplicate->fetch()) throw new Exception('DBError : DUPLICATE');
 
-        $r = Database::getInstance()->prepare("UPDATE projects SET title = :title, slug = :slug, author = :author, projects.date = :date, description = :description, type = :type, public = :public, nb_views = :nb_views, nb_shares = :nb_shares, nb_downloads = :nb_downloads, nb_downloads_limit = :nb_downloads_limit
+        $r = Database::getInstance()->prepare("UPDATE projects SET title = :title, slug = :slug, author = :author, projects.date = :date, description = :description, thumbnail = :thumbnail, type = :type, public = :public, nb_views = :nb_views, nb_shares = :nb_shares, nb_downloads = :nb_downloads, nb_downloads_limit = :nb_downloads_limit
                                                             WHERE id = :id");
 
         $r->bindParam(':id', $this->id);
@@ -105,6 +112,7 @@ class Project
         $r->bindParam(':author', $this->author->id);
         $r->bindParam(':date', $this->date);
         $r->bindParam(':description', $this->description);
+        $r->bindParam(':thumbnail', $this->thumbnail);
         $r->bindParam(':type', $this->type);
         $r->bindParam(':public', $this->public);
         $r->bindParam(':nb_views', $this->nb_views);
@@ -122,6 +130,27 @@ class Project
         $r = Database::getInstance()->prepare('DELETE FROM projects WHERE id = :id');
         $r->bindParam(':id', $this->id);
         if(!$r->execute()) throw new Exception('DBError : DELETE');
+
+        if(file_exists($this->contentFile))
+            unlink($this->contentFile);
+
         return $r->fetch();
+    }
+
+    public function initFileContent()
+    {
+        $this->contentFile = ASSETS_DIR."templates/projects/$this->id.php";
+
+        if(!file_exists($this->contentFile))
+            file_put_contents($this->contentFile, null);
+    }
+
+    public function gridLayout()
+    {
+        $template = new Template(ASSETS_DIR.'templates/project.grid.template.php', [
+            'project' => $this
+        ]);
+
+        return $template->output();
     }
 }

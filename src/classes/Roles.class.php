@@ -3,14 +3,14 @@ require_once 'src/AutoLoader.class.php';
 
 class Roles{
 
-    static public function checkIfGranted($roleName)
-    {
-        if(!isset($_SESSION) || !isset($_SESSION['user']))
-            return FALSE;
-
-        $user = unserialize($_SESSION['user']);
-        return in_array($roleName, $user->roles);
-    }
+    // static public function checkIfGranted($roleName)
+    // {
+    //     if(!isset($_SESSION) || !isset($_SESSION['user']))
+    //         return FALSE;
+    //
+    //     $user = unserialize($_SESSION['user']);
+    //     return in_array($roleName, $user->roles);
+    // }
 
     static public function login($mail, $password){
         try {

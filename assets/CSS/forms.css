@@ -5,9 +5,17 @@
     width: 100%;
     display: flex;
     align-items: stretch;
-    height: 38px;
+    height: 2.5em;
     background: rgba(255, 255, 255, 0.15);
-    flex-direction: row-reverse;
+    flex-direction: row;
+    margin-bottom: .5em;
+}
+
+.input-element.icon-before{
+  flex-direction: row;
+}
+.input-element.icon-after{
+  flex-direction: row-reverse;
 }
 
 .input-element > span {
@@ -63,4 +71,26 @@
 }
 .input-element.disabled input:-moz-placeholder { /* Firefox 18- */
   color: #555;
+}
+
+form.bordered .input-element > span{
+  border-right: 1px solid black;
+  background: black;
+  color: white;
+}
+
+form.bordered .input-element{
+  border: 1px solid black;
+}
+
+form.bordered button{
+  color: white;
+  border-radius: 0;
+  background: black;
+  border: none;
+  outline: none;
+  padding: 0em 1em;
+  height: 2.5em;
+  padding: 0em 1em;
+  margin-left: auto;
 }

@@ -43,7 +43,9 @@ XHR = (function (base) {
     event.preventDefault();
     console.log('[POST REQUEST] '+formElement.action);
     base.post(formElement.action, formElement)
-    .then(callback)
+    .then(function (server) {
+      callback(server);
+    })
     .catch(function(server) {
       LOG.error(server.error);
     });

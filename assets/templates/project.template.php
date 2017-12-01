@@ -36,23 +36,17 @@
               - author
       */
  ?>
-<body class="expand">
 
  <div class="main-ui p-4">
-   <span class="material-icons">close</span>
+   <span class="material-icons" onclick="location.assign('<?=ABS_URL?>')">close</span>
    <span class="material-icons" onclick="body.classList.add('expand')">info</span>
    <span class="material-icons">share</span>
    <span class="material-icons">file_download</span>
  </div>
 
- <main onclick="if(body.classList.contains('expand')) body.classList.remove('expand')" class="container-fluid text-center">
-   <h1>Clémentine</h1>
-   <img src="<?=UPLOADS_DIR.'img1.jpg'?>" class="img-fluid" alt="">
-   <p>C'est un bon fruit.C'est un bon fruit.C'est un bon fruit.C'est un bon fruit.C'est un bon fruit.</p>
-   <img src="<?=UPLOADS_DIR.'img2.jpg'?>" class="img-fluid" alt="">
-   <img src="<?=UPLOADS_DIR.'img3.jpg'?>" class="img-fluid" alt="">
-
- </main>
+<main class="container-fluid">
+    <?php include_once($project->contentFile); ?>
+</main>
 <section class="project-menu container-fluid fixed-bottom p-4">
    <header class="pr-5">
     <section class="project-info">
@@ -82,9 +76,12 @@
    <!-- FIX : Replaced content by section-->
    <section class="project-description pr-md-5">
      <p><?=$project->description?></p>
-     <p><?=$project->description?></p>
     </section>
 
 </section>
 
-</body>
+<script type="text/javascript">
+    document.querySelector('main').addEventListener('click', function(event){
+        if(document.body.classList.contains('expand')) document.body.classList.remove('expand');
+    }, false);
+</script>

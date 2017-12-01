@@ -278,7 +278,7 @@ class AppUtil{
             $basename   = (NULL !== $filename) ? $filename : uniqid('media_');
 
             // // Build the filename
-            $clean = self::toAscii($basename);
+            $clean = String::toAscii($basename);
             $filename =  $clean.$ext;
             // Build the file path
             $filepath =  $folder.$filename;
@@ -292,7 +292,12 @@ class AppUtil{
                 throw new Exception('Erreur lors de l\'ajout du fichier');
 
             $cacheCleaner = '?'.time();
-            return ['filename'=>$filepath, 'size'=>$file['size'], 'contentType'=>$file['type']];
+
+            return [
+                'filepath' => str_replace(ABS_URL, '', UPLOADS_DIR.$filename),
+                'filename'=>$filepath,
+                'size'=>$file['size'],
+                'contentType'=>$file['type']];
         } catch (Exception $e) {
             return FALSE;
         }
