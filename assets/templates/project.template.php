@@ -24,19 +24,6 @@
     }
 </style>
 
-<?php /* TODO:
-              - title
-              - nb_views
-              - nb_shares
-              - nb_downloads
-              - nb_downloads_limit
-              - description
-              - type
-              - date
-              - author
-      */
- ?>
-
  <div class="main-ui p-4">
    <span class="material-icons" onclick="location.assign('<?=ABS_URL?>')">close</span>
    <span class="material-icons" onclick="body.classList.add('expand')">info</span>

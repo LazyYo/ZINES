@@ -278,7 +278,7 @@ class AppUtil{
             $basename   = (NULL !== $filename) ? $filename : uniqid('media_');
 
             // // Build the filename
-            $clean = AppUtil::toAscii($basename);
+            $clean = self::toAscii($basename);
             $filename =  $clean.$ext;
             // Build the file path
             $filepath =  $folder.$filename;

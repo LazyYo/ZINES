@@ -9,17 +9,10 @@ require_once 'src/AutoLoader.class.php';
 
 AppUtil::debug();
 
-// Roles::login('castellani.yoan@gmail.com', 'XXXXXXX');
-// Roles::logout();
 $url = (!isset($_GET['r'])) ? '/' : $_GET['r'];
-
 $router = new Router\Router($url);
 
-include_once(ASSETS_DIR.'templates/examples/routing.php');
-
-$router->get('/login/', 'LoginController::LoginPage', 'login');
-$router->get('/logout', 'LoginController::logout', 'logout');
-$router->post('/login/connect/', 'LoginController::connect');
+PackageManager::initPackages();
 
 $router->get('/projects/:id/:slug', 'ProjectController::show', 'project_show')->with('id', '[0-9]+')->with('slug', '[a-zA-Z0-9-]+');
 $router->get('/projects/:id', 'ProjectController::show', 'project_show')->with('id', '[0-9]+');
@@ -28,15 +21,7 @@ $router->get('/admin/projects/:id', 'ProjectController::edit', 'project_edit')->
 
 $router->post('/admin/profile/avatar', 'UserController::UploadAvatar', 'user_edit_avatar');
 
-
-
-
-$router->get('/admin', function(){
-    echo 'Admin';
-});
 $router->get('/admin/profile/edit', 'AdminController::profile_edit');
-
-
 $router->get('/admin/profile', 'AdminController::profile');
 
 $router->get('/', function(){

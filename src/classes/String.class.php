@@ -3,7 +3,7 @@
 /**
  *
  */
-class String
+class StringUtils
 {
     static function toAscii($str, $replace=array(), $delimiter='-') {
     	if( !empty($replace) ) {

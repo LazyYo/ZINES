@@ -38,7 +38,7 @@ class Project
                 $user = unserialize($_SESSION['user']);
                 $this->author = $user;
             } else {
-                $this->author = User::getById($arr['author']);
+                $this->author = User::getByAttr('id', $arr['author']);
             }
         }
 
@@ -48,7 +48,7 @@ class Project
 
         // Get the Author object
         if(is_numeric($this->author)){
-            $this->author = User::getById($this->author);
+            $this->author = User::getByAttr('id', $this->author);
         }
 
         if($this->id) $this->contentFile = ASSETS_DIR."templates/projects/$this->id.php";
@@ -134,7 +134,7 @@ class Project
         if(file_exists($this->contentFile))
             unlink($this->contentFile);
 
-        return $r->fetch();
+        return true;
     }
 
     public function initFileContent()

@@ -8,8 +8,8 @@ class UserController
     {
         $user = unserialize($_SESSION['user']);
 
-        $user = User::getById($user->id);
-        
+        $user = User::getByAttr('id', $user->id);
+
         $upload = AppUtil::uploadImage($_FILES['user_avatar'], UPLOADS_DIR, 'user_'.$user->id.'_avatar');
 
         $_SESSION['avatar'] = $user->avatar = $upload['filepath'];

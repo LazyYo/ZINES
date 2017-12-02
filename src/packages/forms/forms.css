@@ -1,0 +1,63 @@
+form{
+  margin: auto;
+  padding: 1em;
+}
+
+.input-wrapper{margin-bottom: .5em;}
+
+.input-wrapper .input{
+  display: flex;
+  justify-content: flex-start;
+  border-radius: 2px;
+}
+
+form.dark-bg .input-wrapper .input{ color: white; background-color: rgba(255,255,255, .15);}
+form.dark-bg .input-wrapper .input input{color: white;}
+
+form.light-bg .input-wrapper .input{ color: black; background-color: rgba(0,0,0, .15);}
+form.light-bg .input-wrapper .input input{color: black;}
+
+.input .icon {padding: 0.2em;}
+
+.input input, .input textarea, .input select {
+    border: none;
+    outline: none;
+    flex-grow: 2;
+    font-size: 1em;
+    padding-left: 1em;
+    background: none;
+}
+
+textarea {
+  resize: none;
+  box-sizing: content-box;
+}
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* FEEDBACK */
+
+.feedback {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.2em 0.3em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .35s ease;
+}
+
+.feedback .icon {
+    font-size: 1em;
+    padding-right: 0.5em;
+}
+
+.feedback.failure{color: red;}
+.feedback.success{color: green;}
+.feedback.expand{
+  opacity: 1;
+  transition: opacity .7s ease;
+}
