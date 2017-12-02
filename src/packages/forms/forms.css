@@ -61,3 +61,17 @@ textarea {
   opacity: 1;
   transition: opacity .7s ease;
 }
+
+
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #bbb;
+}
+input::-moz-placeholder { /* Firefox 19+ */
+  color: #bbb;
+}
+input:-ms-input-placeholder { /* IE 10+ */
+  color: #bbb;
+}
+input:-moz-placeholder { /* Firefox 18- */
+  color: #bbb;
+}

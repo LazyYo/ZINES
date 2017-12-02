@@ -7,7 +7,12 @@
     for (var i = 0; i < textEditors.length; i++) {
         var editor = CodeMirror.fromTextArea(textEditors[i], {
           theme: 'mbo',
-          lineNumbers: true
+          lineNumbers: true,
+          mode: "application/x-httpd-php",
+          indentUnit: 4,
+          indentWithTabs: true,
+          enterMode: "keep",
+          tabMode: "shift"
         });
     }
 

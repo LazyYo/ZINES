@@ -12,8 +12,8 @@ class AdminController
     {
         $user = unserialize($_SESSION['user']);
 
-        $user = User::getById($user->id);
-        
+        $user = User::getByAttr('id', $user->id);
+
         $projects = ProjectController::getByAuthor($user->id);
 
         global $page_title;

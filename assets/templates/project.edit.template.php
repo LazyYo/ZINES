@@ -22,6 +22,8 @@
     .main-ui span.material-icons:last-child {
         margin-bottom: 3em;
     }
+
+    .preview{ background: red; }
 </style>
 
  <div class="main-ui p-4">
@@ -32,9 +34,16 @@
  </div>
 
 <main class="container-fluid p-0">
+
     <div class="row">
-        <div class="col">
-            <textarea class="editor"><?=file_get_contents($project->contentFile)?></textarea>
+
+        <div class="col-6 pr-0">
+            <textarea  class="editor"><?=file_get_contents($project->contentFile)?></textarea>
+        </div>
+        <div class="col-6 preview p-0">
+            <div class="">
+
+            </div>
         </div>
     </div>
 
@@ -67,7 +76,7 @@
 
    <!-- FIX : Replaced content by section-->
    <section class="project-description pr-md-5">
-     <p><?=$project->description?></p>
+     <textarea style="height:400px;" class="editor"><?=$project->description?></textarea>
     </section>
 
 </section>
